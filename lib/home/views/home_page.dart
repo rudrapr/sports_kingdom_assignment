@@ -1,21 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 import '../price_bloc/price_bloc.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class MyHomePage extends StatelessWidget {
+  MyHomePage({super.key});
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final double _kItemExtent = 32.0;
-
-  final List<String> _PriceNames = <String>["EUR", "GBP", "USD"];
+  final List<String> _priceNames = <String>["EUR", "GBP", "USD"];
 
   @override
   Widget build(BuildContext context) {
@@ -58,19 +50,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 magnification: 1.22,
                 squeeze: 1.2,
                 useMagnifier: true,
-                itemExtent: _kItemExtent,
+                itemExtent: 32,
                 // This is called when selected item is changed.
                 onSelectedItemChanged: (int selectedItem) {
                   debugPrint("select: $selectedItem");
                   context
                       .read<PriceBloc>()
-                      .add(PriceSelect(currency: _PriceNames[selectedItem]));
+                      .add(PriceSelect(currency: _priceNames[selectedItem]));
                 },
                 children:
-                    List<Widget>.generate(_PriceNames.length, (int index) {
+                    List<Widget>.generate(_priceNames.length, (int index) {
                   return Center(
                     child: Text(
-                      _PriceNames[index],
+                      _priceNames[index],
                     ),
                   );
                 }),

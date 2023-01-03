@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'Bitcoin Price Tracker',
       theme: ThemeData(
           primarySwatch: Colors.teal, scaffoldBackgroundColor: Colors.teal),
-      home: const MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
